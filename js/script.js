@@ -1,67 +1,49 @@
 'use strick';
 
-//Declarar las variables
+// Variables
 
 const button = document.querySelector('.js_play');
 const select = document.querySelector('.js_selected');
-const change = document.querySelector('.js_result');
-const money = document.querySelector('.js_money'); //
-const gambling = document.querySelector('.js_gambling'); //
+const result = document.querySelector('.js_result');
+const money = document.querySelector('.js_money'); 
+const gambling = document.querySelector('.js_gambling'); 
+let actualMoney = 50;
 
 
 
-
-// Funciones
+// Functions
 
 function getRandomNumber(max) {
-
   return Math.ceil(Math.random() * max);
-
 }
 
 
-function win() {
-
-  const betMoney = parseInt(gambling.value);
-  const actualMoney = parseInt(money.innerHTML);
-
-  const winMoney = actualMoney + betMoney*2;
-
-  money.innerHTML = winMoney;
-
-} 
-
-function miss() {
-
-  const betMoney = parseInt(gambling.value);
-  const actualMoney = parseInt(money.innerHTML);
-
-  const loseMoney = actualMoney - betMoney;
-
-  money.innerHTML = loseMoney;
-
+function renderHtml (containerElement, valueToPaint) {
+  containerElement.innerHTML = valueToPaint;
 } 
 
 
+function compareValues(selectedValue, randomNumber) {
 
+  const gamblingValue = parseInt(gambling.value);
 
-function compareValues() {
+  if (selectedValue === randomNumber) {
 
-  const numSelected = parseInt(select.value);
-  
-  const numAleat = getRandomNumber(6);
-  if (numSelected === numAleat) {
-
-    change.innerHTML = 'Has ganado el doble de lo apostado 😁';
-    win();
+    renderHtml(result, 'Has ganado el doble de lo apostado 😁');
+    actualMoney += gamblingValue*2;
 
   } else {
 
-    change.innerHTML = 'Has perdido lo apostado😭';
-    miss();
+    renderHtml(result, 'Has perdido lo apostado 😭');
+    actualMoney -= gamblingValue;
+
   }
 
+  renderHtml(money, actualMoney);
+
 }
+
+
 
 /* function gameOver() {
 
@@ -74,13 +56,17 @@ function compareValues() {
  */ // iba a imprimir un párrafo despues del saldo que diga, ya no puedes apostar más tanto si es meyor que 200 como si es menos que 0 y le iba a decir en ese caso (en cualquiera de los dos) me hicera un removeEventListener. Pero puede que sea mejor hacerlo con poner y quitar clases a los botones que es lo que conocemos
 
 
-// Declarar la función manejadora
 
-function handleClickButton(event) {
+// Handle functions
+
+function handleClickPlayButton(event) {
 
   event.preventDefault();
 
-  compareValues();
+  const selectedValue = parseInt(select.value);
+  const randomNumber = getRandomNumber(6);
+
+  compareValues(selectedValue, randomNumber);
 
 }
 
@@ -88,6 +74,6 @@ function handleClickButton(event) {
 
 
 
-// Declarar el evento 'click' en el button
+// Listeners events
 
-button.addEventListener('click', handleClickButton);
+button.addEventListener('click', handleClickPlayButton);
