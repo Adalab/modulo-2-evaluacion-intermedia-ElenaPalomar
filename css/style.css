@@ -1,3 +1,131 @@
+/* VARIABLES */
+
+:root {
+  /* COLORS */
+  --colorWhite: #fff;
+  --colorBlack: #000;
+
+  --colorDarkGreen: rgb(34, 102, 65);
+  --colorMediumGreen: rgb(60, 184, 116);
+  --colorSoftGreen: rgb(85, 255, 161);
+
+  --colorDarkRed: rgb(66, 13, 13);
+  --colorMediumRed: rgb(131, 36, 36);
+  --colorSoftRed: rgb(230, 45, 45);
+
+
+  /* FONTS */
+  --fontTitle: 'Righteous', cursive;
+  --fontSubtitle: 'Acme', sans-serif;
+  --fontText: 'Handlee', cursive;
+
+}
+
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+/* GLOBALES */
+
+body {
+  background-image: linear-gradient(var(--colorBlack), var(--colorDarkGreen) 70%, var(--colorMediumGreen));
+  background-repeat: no-repeat;
+
+  min-height: 100vh;
+
+  color: var(--colorWhite);
+}
+
+
+/* TITLE */
+
+.title {
+  margin: 60px auto;
+
+  font-family: var(--fontTitle);
+  font-size: 90px;
+  color: var(--colorSoftRed);
+  text-shadow:
+		0 0 5px var(--colorWhite),
+		0 0 10px var(--colorWhite),
+		0 0 20px rgb(206, 163, 163),
+		0 0 30px var(--colorSoftRed),
+		0 0 40px var(--colorMediumRed),
+		0 0 50px var(--colorDarkRed);
+
+    text-align: center;
+}
+
+
+/* PLAY */
+
+.subtitle {
+  margin: 80px auto 20px;
+
+  font-family: var(--fontSubtitle);
+  font-size: 35px;
+  color: var(--colorBlack);
+  text-shadow: 0 0 5px var(--colorWhite);
+
+  text-align: center;
+}
+
+.form {
+  width: 100%;
+
+  margin: 40px auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.formText {
+  font-family: var(--fontSubtitle);
+  font-size: 30px;
+  color: var(--colorDarkGreen);
+  text-shadow: 
+    0 0 2px var(--colorBlack),
+    0 0 5px var(--colorBlack),
+    0 0 10px var(--colorBlack);
+}
+
+.input {
+  background-color: rgb(202, 200, 200);
+  border: var(--colorDarkRed) 10px solid;
+  border-radius: 10px;
+  box-shadow:
+		0 0 10px var(--colorWhite),
+		0 0 15px var(--colorWhite),
+		0 0 40px var(--colorMediumRed),
+		0 0 50px var(--colorDarkRed);
+  width: 400px;
+
+  margin-bottom: 30px;
+  padding: 20px;
+
+  text-shadow: 0 0 10px var(--colorWhite);
+  font-family: var(--fontText);
+  font-size: 20px;
+  text-align: center;
+}
+
+
+
 .hidden {
   display: none;
 }
