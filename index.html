@@ -28,12 +28,19 @@
         placeholder="¿Cuánto apuestas?"
         class="gambling js_gambling"
       />
-      <button class="play js_play">Jugar</button>
+      <button class="button js_play">Jugar</button>
+      <button class="button reset js_reset hidden">Reiniciar Juego</button>
     </form>
 
+    <div class="winning js_winningResult hidden">
+      <h3 class="winning__text">Ha salido el número:</h3>
+      <p class="winning__number js_winningNumber"></p>
+    </div>
     <h2 class="result js_result">Vamos a jugar!</h2>
 
-    <p class="balanceMoney">Saldo: <span class="money js_money">50</span>€</p>
+    <p class="balanceMoney js_balanceMoney">
+      Saldo: <span class="money js_money">50</span>€
+    </p>
 
     <script type="text/javascript" src="./js/script.js"></script>
   </body>
