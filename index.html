@@ -21,39 +21,32 @@
 
   <body>
     <h1 class="title">Dados y apuestas</h1>
-    <h3 class="subtitle">Introduce aquí tu jugada:</h3>
+    <h3 class="subtitle js_subtitle">Introduce aquí tu jugada:</h3>
 
     <form action="" class="form">
-      <div class="container">
-        <label for="move" class="formText"
-          >¿A qué número quieres apostar?</label
-        >
-        <select class="input js_selected" name="move" id="move">
-          <option value="select" selected>
-            ¿Qué número apuestas del 1 al 6?
-          </option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-        </select>
-      </div>
+      <select class="input js_selected" name="move" id="move">
+        <option value="select" selected>
+          ¿Qué número apuestas del 1 al 6?
+        </option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
 
-      <div class="container">
-        <label for="gambling" class="formText">¿Cuál es tu apuesta?</label>
-        <input
-          type="number"
-          name="gambling"
-          id="gambling"
-          placeholder="¿Cuánto apuestas?"
-          class="input js_gambling"
-        />
-      </div>
+      <input
+        type="number"
+        name="gambling"
+        id="gambling"
+        placeholder="¿Cuánto apuestas?"
+        class="input js_gambling"
+      />
 
-      <button class="button js_play">Jugar</button>
+      <button class="play js_play">Jugar</button>
       <button class="button reset js_reset hidden">Reiniciar Juego</button>
+      <button class="button return js_return hidden">Volver al Juego</button>
     </form>
 
     <div class="winning js_winningResult hidden">
@@ -63,7 +56,7 @@
     <h2 class="result js_result">Vamos a jugar!</h2>
 
     <p class="balanceMoney js_balanceMoney">
-      Saldo: <span class="money js_money">50</span>€
+      Saldo: <span class="money js_money">50</span> €
     </p>
 
     <script type="text/javascript" src="./js/script.js"></script>

@@ -13,6 +13,19 @@
   --colorMediumRed: rgb(131, 36, 36);
   --colorSoftRed: rgb(230, 45, 45);
 
+  --colorDarkGold: #bf930d;
+  --colorMediumGold: #efb810;
+  --colorSoftGold: #ffc600;
+  --colorShinyGold: #f3ca4c;
+
+  --colorDarkBlue: rgb(11, 11, 83);
+  --colorSoftBlue: rgb(0, 174, 255);
+
+  --colorDarkSilver: #b4b6b9;
+  --colorSoftSilver:	#e3e4e5;
+
+  --colorGrayBacground: rgb(184, 183, 183);
+
 
   /* FONTS */
   --fontTitle: 'Righteous', cursive;
@@ -45,18 +58,17 @@ body {
 /* TITLE */
 
 .title {
-  margin: 60px auto;
+  margin: 40px auto;
 
   font-family: var(--fontTitle);
-  font-size: 90px;
-  color: var(--colorSoftRed);
+  font-size: 60px;
+  color: var(--colorDarkGold);
   text-shadow:
-		0 0 5px var(--colorWhite),
-		0 0 10px var(--colorWhite),
-		0 0 20px rgb(206, 163, 163),
-		0 0 30px var(--colorSoftRed),
-		0 0 40px var(--colorMediumRed),
-		0 0 50px var(--colorDarkRed);
+		0 2px 2px var(--colorBlack),
+		2px 2px 2px var(--colorBlack),
+		2px 0 2px var(--colorBlack),
+		0 0 2px var(--colorBlack),
+    0 0 10px var(--colorShinyGold);
 
     text-align: center;
 }
@@ -65,12 +77,10 @@ body {
 /* PLAY */
 
 .subtitle {
-  margin: 80px auto 20px;
-
   font-family: var(--fontSubtitle);
-  font-size: 35px;
+  font-size: 25px;
   color: var(--colorBlack);
-  text-shadow: 0 0 5px var(--colorWhite);
+  text-shadow: 0 0 3px var(--colorWhite);
 
   text-align: center;
 }
@@ -83,49 +93,175 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
-}
-
-.container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 20px;
 }
 
-.formText {
-  font-family: var(--fontSubtitle);
-  font-size: 30px;
-  color: var(--colorDarkGreen);
-  text-shadow: 
-    0 0 2px var(--colorBlack),
-    0 0 5px var(--colorBlack),
-    0 0 10px var(--colorBlack);
-}
-
 .input {
-  background-color: rgb(202, 200, 200);
+  background-color: var(--colorGrayBacground);
   border: var(--colorDarkRed) 10px solid;
   border-radius: 10px;
   box-shadow:
+		0 0 5px var(--colorWhite),
 		0 0 10px var(--colorWhite),
-		0 0 15px var(--colorWhite),
-		0 0 40px var(--colorMediumRed),
-		0 0 50px var(--colorDarkRed);
-  width: 400px;
+		0 0 20px var(--colorMediumRed),
+		0 0 40px var(--colorDarkRed);
+
+  width: 260px;
 
   margin-bottom: 30px;
-  padding: 20px;
+  padding: 10px 20px;
 
+  color: var(--colorBlack);
   text-shadow: 0 0 10px var(--colorWhite);
   font-family: var(--fontText);
+  font-size: 18px;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+
+::placeholder {
+  color: var(--colorBlack);
+}
+
+
+/* RESULTS */
+
+.result {
+  margin: 30px 10px 10px;
+
+  font-family: var(--fontSubtitle);
+  font-size: 28px;
+  color: var(--colorDarkGreen);
+  text-shadow:
+    0 2px 2px var(--colorBlack),
+    2px 2px 2px var(--colorBlack),
+    2px 0 2px var(--colorBlack),
+    0 0 15px var(--colorWhite);
+
+  text-align: center;
+}
+
+.results--wrong {
+  color: var(--colorDarkRed);
+  text-shadow:
+    0 0 10px var(--colorWhite),
+    0 0 20px var(--colorMediumRed);
+}
+
+.balanceMoney {
+  font-family: var(--fontSubtitle);
   font-size: 20px;
+  color: var(--colorBlack);
+  text-shadow: 0 0 3px var(--colorWhite);
+
+  text-align: center;
+}
+
+.money {
+  font-family: var(--fontSubtitle);
+  font-size: 25px;
+  color: var(--colorDarkGreen);
+  text-shadow:
+    0 2px 2px var(--colorBlack),
+    2px 2px 2px var(--colorBlack),
+    2px 0 2px var(--colorBlack),
+    0 0 2px var(--colorBlack);
+
   text-align: center;
 }
 
 
+.winning__text {
+  margin: 20px;
 
+  font-family: var(--fontSubtitle);
+  font-size: 25px;
+  color: var(--colorBlack);
+  text-shadow: 0 0 3px var(--colorWhite);
+
+  text-align: center;
+}
+
+.winning__number {
+  background-image: radial-gradient(var(--colorDarkBlue) 20%, var(--colorSoftBlue), var(--colorWhite) 85%);
+  border: var(--colorDarkGold) 10px ridge;
+  border-radius: 50%;
+
+  width: 100px;
+  height: 100px;
+
+  margin: 0 auto;
+
+  color: var(--colorDarkGold);
+  font-family: var(--fontTitle);
+  font-size: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* BUTTONS */
+
+.play {
+  background-image: linear-gradient(var(--colorSoftGold), var(--colorMediumGold), var(--colorDarkGold));
+  border: var(--colorDarkGold) 5px outset;
+
+  padding: 10px 40px;
+
+  font-family: var(--fontSubtitle);
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+.button {
+  background-image: linear-gradient(var(--colorSoftSilver), var(--colorDarkSilver));
+  border: var(--colorDarkSilver) 5px outset;
+
+  padding: 10px 40px;
+
+  font-family: var(--fontSubtitle);
+  font-size: 20px;
+
+  cursor: pointer;
+}
+
+
+
+/* HIDDEN */
 .hidden {
   display: none;
+}
+
+
+/* MEDIAQUERIES */
+
+@media all and (min-width: 768px) {
+
+  .title {
+    margin: 80px auto 60px;
+    font-size: 80px;
+  }
+
+}
+
+@media all and (min-width: 1200px) {
+
+  .title {
+    font-size: 100px;
+  }
+
+  .form {
+    width: 700px;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .input {
+    margin: 30px;
+  }
+
 }

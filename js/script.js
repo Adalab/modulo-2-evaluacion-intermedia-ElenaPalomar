@@ -12,6 +12,8 @@ const reset = document.querySelector('.js_reset');
 const balanceMoney = document.querySelector('.js_balanceMoney');
 const winningNumber = document.querySelector('.js_winningNumber');
 const winningResult = document.querySelector('.js_winningResult');
+const returnButton = document.querySelector('.js_return');
+const subtitle = document.querySelector('.js_subtitle');
 
 
 
@@ -27,32 +29,56 @@ function renderHtml (containerElement, valueToPaint) {
 }
 
 
-function addClass(element) {
+function addClassHidden(element) {
   element.classList.add('hidden');
 }
 
-function removeClass(element) {
+function removeClassHidden(element) {
   element.classList.remove('hidden');
+}
+
+
+function addClassWrong() {
+  result.classList.add('results--wrong');
+}
+
+function removeClassWrong() {
+  result.classList.remove('results--wrong');
 }
 
 
 function renderRandomNumber(randomNumber) {
   renderHtml(winningNumber, randomNumber);
 
-  removeClass(winningResult);
+  removeClassHidden(winningResult);
+}
+
+
+function outGame() {
+  addClassHidden(subtitle);
+
+  removeClassHidden(returnButton);
+  addClassHidden(play);
+
+  addClassHidden(select);
+  addClassHidden(gambling);
+
+  addClassHidden(balanceMoney);
+
+  addClassHidden(winningResult);
 }
 
 
 function blockGame() {
-  removeClass(reset);
-  addClass(play);
+  removeClassHidden(reset);
+  addClassHidden(play);
 
-  addClass(select);
-  addClass(gambling);
+  addClassHidden(select);
+  addClassHidden(gambling);
 
-  addClass(balanceMoney);
+  addClassHidden(balanceMoney);
 
-  addClass(winningResult);
+  addClassHidden(winningResult);
 }
 
 function gameOver() {
@@ -60,11 +86,13 @@ function gameOver() {
 
     blockGame();
     renderHtml(result, '¡Ups! Ha ganado la IA');
+    addClassWrong();
 
   } else if (actualMoney >= 200) {
 
     blockGame();
     renderHtml(result, '¡Enhorabuena! Has ganado a la IA');
+    removeClassWrong();
 
   }
 }
@@ -75,17 +103,20 @@ function game(selectedValue, randomNumber, gamblingValue) {
   if (select.value === 'select') { 
 
     renderHtml(result, '¡No has elegido ningún número!');
-    blockGame();
+    addClassWrong();
+    outGame();
 
   } else if(gamblingValue > actualMoney) {
 
     renderHtml(result, 'No puedes apostar más de lo que tienes');
-    blockGame();
+    addClassWrong();
+    outGame();
 
   }  else if (gamblingValue <= 0 || gambling.value === '' ) { 
 
     renderHtml(result, '¿Estás de broma? Quien no arriesga no gana');
-    blockGame();
+    addClassWrong();
+    outGame();
 
   } else {
 
@@ -101,11 +132,13 @@ function compareValues(selectedValue, randomNumber, gamblingValue) {
   if (selectedValue === randomNumber) {
 
     renderHtml(result, '¡Genial! Has ganado el doble de lo apostado 😁');
+    removeClassWrong();
     actualMoney += gamblingValue*2;
 
   } else {
 
     renderHtml(result, '¡Ooohh! Has perdido lo apostado 😭');
+    addClassWrong();
     actualMoney -= gamblingValue;
 
   }
@@ -140,13 +173,15 @@ function handleClickResetButton(event) {
 
   event.preventDefault();
 
-  addClass(reset);
-  removeClass(play);
+  addClassHidden(reset);
+  removeClassHidden(play);
 
-  removeClass(select);
-  removeClass(gambling);
+  removeClassHidden(select);
+  removeClassHidden(gambling);
 
-  removeClass(balanceMoney);
+  removeClassHidden(balanceMoney);
+
+  removeClassWrong();
 
   select.value = 'select';
   gambling.value = '';
@@ -159,8 +194,28 @@ function handleClickResetButton(event) {
 }
 
 
+function handleClickReturnButton(event) {
+
+  event.preventDefault();
+
+  addClassHidden(returnButton);
+  removeClassHidden(play);
+
+  removeClassHidden(select);
+  removeClassHidden(gambling);
+
+  removeClassHidden(balanceMoney);
+
+  removeClassWrong();
+
+  renderHtml(result, 'Vamos a jugar!');
+
+}
+
+
 
 // Listeners events
 
 play.addEventListener('click', handleClickPlayButton);
 reset.addEventListener('click', handleClickResetButton);
+returnButton.addEventListener('click', handleClickReturnButton);
